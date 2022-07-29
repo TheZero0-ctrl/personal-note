@@ -12,10 +12,12 @@
   </head>
 
   <body class="bg-[#F4F5F9]">
-     <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+    <% if flash.any? %>
+      <div>
+        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block"><%= notice %></p>
+        <p class="py-2 px-3 bg-green-50 mb-5 text-red-500 font-medium rounded-lg inline-block"><%= alert %></p>
+      </div>
+    <% end %>
     <nav>
       <% if user_signed_in? %>
         <%= render "layouts/navbar" %>

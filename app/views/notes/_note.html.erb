@@ -1,22 +1,16 @@
-<div id="<%= dom_id note %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= note.title %>
-  </p>
+<div id="<%= dom_id note %>" class="mt-10">
+  <div class="my-5 flex gap-4 items-center">
+    <div class="font-bold text-4xl"><%= note.title.capitalize %></div>
+    <div class="text-sm font-light"><%= note.created_at.strftime('%B %d, %Y') %></div>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Content:</strong>
+  <div class="my-5">
     <%= note.content %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= note.user_id %>
-  </p>
+  </div>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this note", note, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this note', edit_note_path(note), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this note", note, class: "rounded-lg py-3 px-5 bg-gray-200 inline-block font-medium hover:bg-gray-300" %>
+    <%= link_to 'Edit this note', edit_note_path(note), class: "rounded-lg py-3 ml-2 px-5 bg-gray-200 inline-block font-medium hover:bg-gray-300" %>
     <hr class="mt-6">
   <% end %>
 </div>

@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :set_note, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :correct_user, only: :show
 
 
   # GET /notes/1 or /notes/1.json
@@ -9,7 +10,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    @note = current_user.notes.build()
   end
 
   # GET /notes/1/edit
@@ -18,7 +19,7 @@ class NotesController < ApplicationController
 
   # POST /notes or /notes.json
   def create
-    @note = Note.new(note_params)
+    @note = current_user.notes.build(note_params)
 
     respond_to do |format|
       if @note.save
@@ -49,7 +50,7 @@ class NotesController < ApplicationController
     @note.destroy
 
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
+      format.html { redirect_to root_url, notice: "Note was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -62,6 +63,12 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :content, :user_id)
+      params.require(:note).permit(:title, :content)
+    end
+
+    def correct_user
+      if @note.user != current_user
+        redirect_to root_url
+      end
     end
 end

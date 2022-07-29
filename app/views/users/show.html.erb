@@ -3,16 +3,19 @@
         <div class="flex flex-col space-y-2 md:flex-row md-space-y-0 p-4 md:justify-between md:items-center">
             <h2 class="text-2xl font-bold">Notes</h2>
             <div class="flex gap-2 flex-col md:justify-center md:items-center md:flex-row">
-                <div class="flex gap-2 md:justify-center items-center">
-                    <label for="filter" class="font-light">Filter By:</label>
-                    <div class="flex p-2.5 border-2 border-gray-700 rounded-md items-center justify-center">
-                        <input type="date" id="filter" name="filter" class="border-none p-0">
-                        <%= image_tag "Calendar Icon in Filter By Date.png", class:"w-[30px] h-[20px]"%>
+                <%= form_with id:"myForm" do |form| %>
+                    <div class="flex gap-2 md:justify-center items-center">
+                        <%= form.label :filter, "Filter By:", class:"font-light"%>
+                        <div class="flex p-2.5 border-2 border-gray-700 rounded-md items-center justify-center">
+                            <%= form.date_field :filter, class:"border-none p-0 focus:outline-white focus:bg-[#FAFBFC]", value:@date %>
+                            <label for="filter"><%= image_tag "Calendar Icon in Filter By Date.png", class:"w-[30px] h-[20px]"%></label>
+                        </div>
+
                     </div>
-                </div>
+                <% end %>
                 <% if !@notes.empty? %>
-                    <a href="<%= new_note_path %>" class="border-2 bg-[#FAFBFC] border-[#F04C55] rounded-md px-2.5">
-                        <div class="flex text-[#F04C55] justify-center items-center gap-2">
+                    <a href="<%= new_note_path %>" class="border-2 bg-[#FAFBFC] border-[#F04C55] rounded-md px-2.5 hover:bg-[#F04C55]">
+                        <div class="flex text-[#F04C55] justify-center items-center gap-2 hover:text-white">
                             <div class="text-4xl mb-1">+</div>
                             <div>Add Note</div>
                         </div>
@@ -29,3 +32,5 @@
         </div>
      </div>
 </div>
+
+

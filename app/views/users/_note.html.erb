@@ -1,13 +1,53 @@
-<div class="grid gap-4 md:grid-cols-4 p-4">
+<div class="grid gap-4 md:grid-cols-3 p-4 lg:grid-cols-4">
     <% @notes.each do |note| %>
-        <div class="bg-[#F4F5F9] p-4 h-72">
+        <div class="bg-[#F4F5F9] p-4 h-[20rem] overflow-hidden rounded-md shadow-sm">
             <div class="flex justify-between items-center">
-                <%= link_to note.title.capitalize, note%>
-                <div><%= note.created_at.strftime('%B %d, %Y') %></div>
+                <%= link_to note.title.capitalize, note, class:"font-bold transition hover:scale-105 duration-150"%>
+                <div class=" flex items-center gap-2">
+                    <div class="text-xs font-light"><%= note.created_at.strftime('%B %d, %Y') %></div>
+                    <div class="dropdown relative">
+                        <button id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <%= image_tag "baseline_more_vert_black_24dp.png", class:"w-[16px] mt-1 dropdown-button"%>
+                        </button>
+                        <ul class="dropdown-menu min-w-max absolute hidden bg-[#FAFBFC] text-xs text-left -left-16
+                            rounded-md shadow-sm p-4" aria-labelledby="dropdownMenuButton1" id="dropdown1">
+                            <li>
+                                <a class="dropdown-item block w-full hover:bg-gray-100" href="<%= edit_note_path(note)%>">
+                                    <div class="flex items-center gap-1">
+                                        <%= image_tag "edit_note_black_24dp.svg", class:"w-[16px]"%>
+                                        <p>Edit</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item block w-full hover:bg-gray-100 mt-4" href="<%= note_path(note) %>" data-method="delete">
+                                    <div class="flex items-center gap-1">
+                                        <%= image_tag "delete_outline_black_24dp.svg", class:"w-[16px]"%>
+                                        <p>Delete</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <div class="absolute w-0 h-0 border-y-[13px] border-y-transparent border-r-[26px] border-r-[#FAFBFC] -top-2 right-3"></div>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <a href="<%= note_path(note.id) %>">
-                <p class="mt-4"><%= note.content %></p>
+                <p class="mt-4 transition hover:scale-105 duration-150"><%= note.content %></p>
             </a>
         </div>
     <% end %>
 </div>
+
+<script>
+    var mainDropdown = document.getElementsByClassName('dropdown');
+    var emap = [...mainDropdown]
+
+    emap.forEach((elem)=> {
+        let triggerEl = elem.firstElementChild
+        let targetEl = elem.lastElementChild
+        triggerEl.addEventListener("click", () => {
+            targetEl.classList.toggle("hidden")
+        })
+    })
+</script>
