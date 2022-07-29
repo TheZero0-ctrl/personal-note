@@ -1,0 +1,13 @@
+<div class="grid gap-4 md:grid-cols-4 p-4">
+    <% @notes.each do |note| %>
+        <div class="bg-[#F4F5F9] p-4 h-72">
+            <div class="flex justify-between items-center">
+                <%= link_to note.title.capitalize, note%>
+                <div><%= note.created_at.strftime('%B %d, %Y') %></div>
+            </div>
+            <a href="<%= note_path(note.id) %>">
+                <p class="mt-4"><%= note.content %></p>
+            </a>
+        </div>
+    <% end %>
+</div>

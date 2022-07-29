@@ -1,3 +1,31 @@
 <div class="h-screen bg-[#F4F5F9]">
-     hello
+     <div class="m-4 md:mx-20 md:m-10 p-4 bg-[#FAFBFC] shadow-sm min-h-[80%]">
+        <div class="flex flex-col space-y-2 md:flex-row md-space-y-0 p-4 md:justify-between md:items-center">
+            <h2 class="text-2xl font-bold">Notes</h2>
+            <div class="flex gap-2 flex-col md:justify-center md:items-center md:flex-row">
+                <div class="flex gap-2 md:justify-center items-center">
+                    <label for="filter" class="font-light">Filter By:</label>
+                    <div class="flex p-2.5 border-2 border-gray-700 rounded-md items-center justify-center">
+                        <input type="date" id="filter" name="filter" class="border-none p-0">
+                        <%= image_tag "Calendar Icon in Filter By Date.png", class:"w-[30px] h-[20px]"%>
+                    </div>
+                </div>
+                <% if !@notes.empty? %>
+                    <a href="<%= new_note_path %>" class="border-2 bg-[#FAFBFC] border-[#F04C55] rounded-md px-2.5">
+                        <div class="flex text-[#F04C55] justify-center items-center gap-2">
+                            <div class="text-4xl mb-1">+</div>
+                            <div>Add Note</div>
+                        </div>
+                    </a>
+                <% end %>
+            </div>
+        </div>
+        <div>
+            <% if @notes.empty? %>
+                <%= render "empty_note" %>
+            <% else %>
+                <%= render "note" %>
+            <% end %>
+        </div>
+     </div>
 </div>

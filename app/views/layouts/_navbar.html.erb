@@ -1,4 +1,4 @@
-<div class="bg-[#FAFBFC] mt-4 p-4 flex justify-between">
-    <%= image_tag "Truemark Logo.png" %>
-    <div>log out</div>
+<div class="bg-[#FAFBFC] mt-4 p-4 flex justify-between items-center">
+    <%= link_to image_tag("Truemark Logo.png"), root_url, class:"hover:bg-gray-200 p-2 ml-20" %>
+    <div class="p-2 hover:bg-gray-200 mr-20"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
 </div>

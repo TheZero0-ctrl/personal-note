@@ -8,3 +8,6 @@
 
 
 testuser1 = User.create(email: "testuser@mail.com", password: "123456")
+
+testuser1.notes.create(title: "hello", content: "lorem ipsum")
+testuser1.notes.create(title: "about universe", content: "lorem ipsum 42 lorem ipsum")
