@@ -19,7 +19,7 @@ Then, seed the database
 ```
 $ rails db:seed
 ```
-inally, run the test suite to verify that everything is working correctly:
+finally, run the test suite to verify that everything is working correctly:
 ```
 $ rails test
 ```
