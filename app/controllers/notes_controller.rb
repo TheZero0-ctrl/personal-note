@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   before_action :set_note, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :correct_user, only: :show
+  before_action :correct_user, only: [:show, :destroy]
 
 
   # GET /notes/1 or /notes/1.json

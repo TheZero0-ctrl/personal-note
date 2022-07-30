@@ -7,7 +7,4 @@ import "controllers"
 
 
 const datePicker = document.getElementById("filter")
-const myForm = document.getElementById("myForm")
-datePicker.addEventListener("change", () => {
-    myForm.submit()
-})
+datePicker = ""
