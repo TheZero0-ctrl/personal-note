@@ -11,7 +11,7 @@ testuser1 = User.create(email: "testuser1@mail.com", password: "123456")
 testuser2 = User.create(email: "testuser2@mail.com", password: "123456")
 
 
-4.times do
-    testuser1.notes.create(title: Faker::Lorem.word ,content: Faker::Quote.matz)
-    testuser2.notes.create(title: Faker::Lorem.word ,content: Faker::Quote.matz)
+4.times do |n|
+    testuser1.notes.create(title: Faker::Lorem.word ,content: Faker::Quote.matz, created_at: n.days.ago)
+    testuser2.notes.create(title: Faker::Lorem.word ,content: Faker::Quote.matz, created_at: n.days.ago)
 end
