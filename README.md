@@ -22,6 +22,7 @@ $ rails db:seed
 Then, build tailwind css file
 ```
 $ ./bin/dev
+```
 finally, run the test suite to verify that everything is working correctly:
 ```
 $ rails test
