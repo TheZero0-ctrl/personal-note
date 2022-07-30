@@ -9,7 +9,7 @@ This is simple web app where user can create, edit, and delete notes
 To get started with the app, clone the repo and then install the needed gems:
 
 ```
-$ bundle install
+$ bundle install --without production
 ```
 Next, migrate the database:
 ```
