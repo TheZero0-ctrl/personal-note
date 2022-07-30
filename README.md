@@ -15,17 +15,16 @@ Next, migrate the database:
 ```
 $ rails db:migrate
 ```
-Then, seed the database
+Next, seed the database
 ```
 $ rails db:seed
 ```
+Then, build tailwind css file
+```
+$ ./bin/dev
 finally, run the test suite to verify that everything is working correctly:
 ```
 $ rails test
-```
-If the test suite passes, you'll be ready to run the app in a local server:
-```
-$ rails server
 ```
 For login information look at the db/seeds.rb file
 
